@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>כרטיסיות לימוד — משיט 30</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;900&family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('vFs36s_R1mOiFP2LH');</script>
+<style>
+  :root {
+    --navy: #0a1628;
+    --deep: #0d1f3c;
+    --ocean: #0e3460;
+    --wave: #1a5276;
+    --teal: #148f77;
+    --foam: #a3d5cc;
+    --gold: #f0a500;
+    --sand: #f5e6c8;
+    --white: #f0f4f8;
+    --muted: #8fa8c8;
+    --text: #dce8f5;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Assistant', 'Heebo', sans-serif;
+    background: var(--navy);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Background ocean effect */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 100%, #0e346055 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 20% 80%, #14827744 0%, transparent 60%),
+      radial-gradient(ellipse 50% 30% at 80% 20%, #0a162855 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Subtle wave lines */
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0; right: 0;
+    height: 200px;
+    background:
+      repeating-linear-gradient(
+        transparent,
+        transparent 28px,
+        rgba(20,143,119,0.07) 28px,
+        rgba(20,143,119,0.07) 30px
+      );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  header {
+    text-align: center;
+    padding: 30px 0 20px;
+    position: relative;
+  }
+
+  .logo-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 12px rgba(240,165,0,0.5));
+    animation: sway 4s ease-in-out infinite;
+  }
+
+  @keyframes sway {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+
+  h1 {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: var(--white);
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+  }
+
+  h1 span {
+    color: var(--gold);
+  }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-top: 6px;
+    font-weight: 300;
+  }
+
+  /* Category selector */
+  .category-section {
+    margin: 24px 0 20px;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .category-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .cat-btn {
+    background: rgba(13,31,60,0.8);
+    border: 1px solid rgba(163,213,204,0.2);
+    color: var(--foam);
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-family: 'Assistant', sans-serif;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  .cat-btn:hover {
+    border-color: var(--teal);
+    background: rgba(20,143,119,0.15);
+    color: var(--white);
+  }
+
+  .cat-btn.active {
+    background: linear-gradient(135deg, var(--teal), #0e6655);
+    border-color: var(--teal);
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 0 12px rgba(20,143,119,0.4);
+  }
+
+  /* Controls bar */
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 16px 0;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    background: rgba(13,31,60,0.8);
+    border: 1px solid rgba(163,213,204,0.25);
+    color: var(--foam);
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-family: 'Assistant', sans-serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+  }
+
+  .btn:hover {
+    background: rgba(20,143,119,0.2);
+    border-color: var(--teal);
+    color: var(--white);
+  }
+
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold), #c87f00);
+    border-color: var(--gold);
+    color: #1a0e00;
+    font-weight: 700;
+  }
+
+  .btn-gold:hover {
+    box-shadow: 0 0 16px rgba(240,165,0,0.4);
+    color: #000;
+  }
+
+  .counter {
+    margin-right: auto;
+    font-size: 0.8rem;
+    color: var(--muted);
+    background: rgba(13,31,60,0.6);
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(163,213,204,0.1);
+  }
+
+  .counter strong {
+    color: var(--gold);
+    font-size: 1rem;
+  }
+
+  /* Progress bar */
+  .progress-wrap {
+    height: 3px;
+    background: rgba(163,213,204,0.1);
+    border-radius: 2px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--teal), var(--gold));
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+
+  /* Flashcard */
+  .card-wrap {
+    perspective: 1200px;
+    margin: 0 auto 20px;
+  }
+
+  .card {
+    position: relative;
+    width: 100%;
+    min-height: 280px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+
+  .card.flipped {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    min-height: 280px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .card-front {
+    background: linear-gradient(145deg, #0d2444 0%, #0a1e3d 60%, #0d2c4a 100%);
+    border: 1px solid rgba(163,213,204,0.2);
+    box-shadow:
+      0 20px 60px rgba(0,0,0,0.5),
+      0 0 0 1px rgba(163,213,204,0.05),
+      inset 0 1px 0 rgba(163,213,204,0.1);
+  }
+
+  .card-back {
+    background: linear-gradient(145deg, #0b2a1f 0%, #091e16 60%, #0d2d24 100%);
+    border: 1px solid rgba(20,143,119,0.35);
+    box-shadow:
+      0 20px 60px rgba(0,0,0,0.5),
+      0 0 0 1px rgba(20,143,119,0.1),
+      inset 0 1px 0 rgba(20,143,119,0.15);
+    transform: rotateY(180deg);
+  }
+
+  .card-label {
+    font-size: 0.7rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  .card-front .card-label {
+    background: rgba(240,165,0,0.15);
+    color: var(--gold);
+    border: 1px solid rgba(240,165,0,0.3);
+  }
+
+  .card-back .card-label {
+    background: rgba(20,143,119,0.2);
+    color: var(--foam);
+    border: 1px solid rgba(20,143,119,0.35);
+  }
+
+  .category-tag {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-bottom: 14px;
+    font-weight: 300;
+  }
+
+  .card-question {
+    font-family: 'Heebo', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.6;
+    max-width: 680px;
+  }
+
+  .card-answer {
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    color: var(--text);
+    line-height: 1.75;
+    max-width: 700px;
+    font-weight: 300;
+    white-space: pre-line;
+  }
+
+  .card-answer strong {
+    color: var(--foam);
+    font-weight: 600;
+  }
+
+  .speak-btn {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(163,213,204,0.2);
+    border-radius: 8px;
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 10;
+  }
+  .speak-btn:hover { background: rgba(163,213,204,0.15); border-color: var(--teal); transform: scale(1.1); }
+  .speak-btn.speaking { background: rgba(20,143,119,0.25); border-color: var(--teal); animation: pulse 1s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(20,143,119,0.4); } 50% { box-shadow: 0 0 0 6px rgba(20,143,119,0); } }
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: rgba(163,213,204,0.35);
+    font-family: 'Heebo', monospace;
+  }
+
+  .card-front .card-id { color: rgba(240,165,0,0.4); }
+  .card-back .card-id { color: rgba(163,213,204,0.35); }
+
+  .flip-hint {
+    position: absolute;
+    bottom: 16px;
+    font-size: 0.72rem;
+    color: rgba(163,213,204,0.4);
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* Navigation */
+  .nav-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin-top: 16px;
+  }
+
+  .nav-btn {
+    background: rgba(13,31,60,0.8);
+    border: 1px solid rgba(163,213,204,0.2);
+    color: var(--foam);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-btn:hover:not(:disabled) {
+    background: rgba(20,143,119,0.25);
+    border-color: var(--teal);
+    color: var(--white);
+    transform: scale(1.05);
+  }
+
+  .nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .pos-indicator {
+    font-size: 0.9rem;
+    color: var(--muted);
+    min-width: 70px;
+    text-align: center;
+  }
+
+  /* Empty state */
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
+  }
+
+  .empty-state .icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
+
+  /* Score buttons on card back */
+  .score-row {
+    display: flex;
+    gap: 20px;
+    margin-top: 18px;
+    justify-content: center;
+  }
+
+  .score-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: all 0.18s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    position: relative;
+    z-index: 10;
+  }
+
+  .score-btn:active { transform: scale(0.92); }
+
+  .btn-wrong {
+    background: rgba(200,50,50,0.18);
+    border: 2px solid rgba(220,60,60,0.5);
+    color: #ff6b6b;
+  }
+  .btn-wrong:hover { background: rgba(200,50,50,0.35); border-color: #ff6b6b; box-shadow: 0 0 14px rgba(220,60,60,0.35); }
+
+  .btn-correct {
+    background: rgba(20,143,119,0.18);
+    border: 2px solid rgba(20,143,119,0.5);
+    color: #4ecdc4;
+  }
+  .btn-correct:hover { background: rgba(20,143,119,0.35); border-color: #4ecdc4; box-shadow: 0 0 14px rgba(20,143,119,0.4); }
+
+  .score-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--gold);
+    color: #1a0e00;
+    font-size: 0.6rem;
+    font-weight: 800;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Score summary modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(5,12,25,0.88);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: linear-gradient(145deg, #0d2444, #091a30);
+    border: 1px solid rgba(163,213,204,0.25);
+    border-radius: 20px;
+    padding: 36px 32px;
+    max-width: 480px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    position: relative;
+    animation: modalIn 0.3s ease;
+  }
+
+  @keyframes modalIn {
+    from { transform: scale(0.88) translateY(20px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+  }
+
+  .modal h2 {
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .score-big {
+    font-family: 'Heebo', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin: 16px 0 4px;
+  }
+
+  .score-sub {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  .score-stats {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin: 16px 0 24px;
+  }
+
+  .stat-box {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 12px 8px;
+    border: 1px solid rgba(163,213,204,0.1);
+  }
+
+  .stat-box .stat-num {
+    font-size: 1.6rem;
+    font-weight: 800;
+    font-family: 'Heebo', sans-serif;
+  }
+
+  .stat-box .stat-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .stat-correct .stat-num { color: #4ecdc4; }
+  .stat-wrong .stat-num { color: #ff6b6b; }
+  .stat-skip .stat-num { color: var(--muted); }
+
+  .modal-btns {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .modal-close-btn {
+    background: rgba(163,213,204,0.1);
+    border: 1px solid rgba(163,213,204,0.25);
+    color: var(--foam);
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Assistant', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .modal-close-btn:hover { background: rgba(163,213,204,0.2); }
+
+  .btn-download {
+    background: linear-gradient(135deg, #0e6655, var(--teal));
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Assistant', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-download:hover { box-shadow: 0 0 14px rgba(20,143,119,0.4); }
+  .btn-download:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* Error report page */
+  .error-page {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--navy);
+    z-index: 200;
+    overflow-y: auto;
+    padding: 30px 20px;
+  }
+  .error-page.open { display: block; }
+
+  .error-inner {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .error-page h2 {
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .error-page .subtitle-err {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin-bottom: 24px;
+  }
+
+  .card-preview {
+    background: linear-gradient(145deg, #0d2444, #091a30);
+    border: 1px solid rgba(163,213,204,0.2);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+
+  .card-preview .preview-label {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .card-preview .preview-id {
+    font-size: 0.72rem;
+    color: rgba(240,165,0,0.5);
+    margin-bottom: 4px;
+  }
+
+  .card-preview .preview-q {
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 12px;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .card-preview .preview-a {
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.65;
+    border-top: 1px solid rgba(163,213,204,0.1);
+    padding-top: 12px;
+  }
+
+  .err-field {
+    margin-bottom: 16px;
+  }
+
+  .err-field label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--foam);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .err-field textarea, .err-field input {
+    width: 100%;
+    background: rgba(13,31,60,0.8);
+    border: 1px solid rgba(163,213,204,0.2);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'Assistant', sans-serif;
+    font-size: 0.9rem;
+    padding: 10px 14px;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+    direction: rtl;
+  }
+
+  .err-field textarea:focus, .err-field input:focus {
+    border-color: var(--teal);
+  }
+
+  .err-field textarea { min-height: 90px; }
+
+  .err-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn-send {
+    background: linear-gradient(135deg, var(--gold), #c87f00);
+    border: none;
+    color: #1a0e00;
+    font-family: 'Assistant', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex: 1;
+  }
+  .btn-send:hover { box-shadow: 0 0 16px rgba(240,165,0,0.4); }
+
+  .btn-cancel {
+    background: rgba(163,213,204,0.08);
+    border: 1px solid rgba(163,213,204,0.2);
+    color: var(--foam);
+    font-family: 'Assistant', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-cancel:hover { background: rgba(163,213,204,0.15); }
+
+  .btn-report {
+    background: rgba(220,80,60,0.12);
+    border: 1px solid rgba(220,80,60,0.3);
+    color: #ff8a75;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-family: 'Assistant', sans-serif;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .btn-report:hover { background: rgba(220,80,60,0.25); border-color: #ff6b6b; color: #ffb3a7; }
+
+  /* Live score chip */
+  .live-score {
+    background: rgba(13,31,60,0.8);
+    border: 1px solid rgba(163,213,204,0.15);
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .live-score .ls-correct { color: #4ecdc4; font-weight: 700; }
+  .live-score .ls-wrong { color: #ff6b6b; font-weight: 700; }
+
+  /* Tip & Suggestion pages — shared with error-page pattern */
+  .tip-page, .suggest-page {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--navy);
+    z-index: 200;
+    overflow-y: auto;
+    padding: 30px 20px;
+  }
+  .tip-page.open, .suggest-page.open { display: block; }
+
+  .tip-inner, .suggest-inner {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Tip page */
+  .tip-hero {
+    text-align: center;
+    padding: 10px 0 28px;
+  }
+  .tip-hero .tip-emoji {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 10px;
+    animation: sway 3s ease-in-out infinite;
+  }
+  .tip-hero h2 {
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .tip-hero p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .tip-hero p strong { color: var(--foam); }
+
+  .tip-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .tip-card {
+    background: linear-gradient(145deg, #0d2444, #091a30);
+    border: 1px solid rgba(163,213,204,0.15);
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .tip-card:hover { border-color: rgba(163,213,204,0.35); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+
+  .tip-icon {
+    font-size: 2.2rem;
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tip-info { flex: 1; }
+  .tip-info .tip-name {
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+  .tip-info .tip-detail {
+    font-size: 0.85rem;
+    color: var(--muted);
+    direction: ltr;
+    text-align: right;
+  }
+  .tip-info .tip-num {
+    font-size: 1rem;
+    color: var(--foam);
+    font-weight: 600;
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+
+  .tip-cta {
+    background: linear-gradient(135deg, var(--gold), #c87f00);
+    border: none;
+    color: #1a0e00;
+    font-family: 'Assistant', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 12px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+  }
+  .tip-cta:hover { box-shadow: 0 0 20px rgba(240,165,0,0.45); }
+
+  .tip-amounts {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-bottom: 6px;
+  }
+  .tip-amount-badge {
+    background: rgba(240,165,0,0.12);
+    border: 1px solid rgba(240,165,0,0.3);
+    color: var(--gold);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: all 0.18s;
+  }
+  a.tip-amount-badge:hover {
+    background: rgba(240,165,0,0.28);
+    border-color: var(--gold);
+    transform: scale(1.06);
+    display: inline-block;
+  }
+
+  .tip-note {
+    text-align: center;
+    color: rgba(163,213,204,0.35);
+    font-size: 0.78rem;
+    margin-top: 10px;
+  }
+
+  /* Suggestion page */
+  .suggest-page h2 {
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .suggest-page .subtitle-sug {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin-bottom: 24px;
+  }
+
+  /* Extra buttons */
+  .btn-tip {
+    background: linear-gradient(135deg, rgba(240,165,0,0.2), rgba(200,127,0,0.2));
+    border: 1px solid rgba(240,165,0,0.45);
+    color: var(--gold);
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-family: 'Assistant', sans-serif;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .btn-tip:hover { background: rgba(240,165,0,0.3); box-shadow: 0 0 12px rgba(240,165,0,0.25); }
+
+  .btn-suggest {
+    background: rgba(100,149,237,0.12);
+    border: 1px solid rgba(100,149,237,0.3);
+    color: #90b8f8;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-family: 'Assistant', sans-serif;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .btn-suggest:hover { background: rgba(100,149,237,0.25); border-color: #90b8f8; }
+
+  .second-row-btns {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .card-face { padding: 24px 20px 50px; }
+    .category-grid { gap: 6px; }
+    .cat-btn { font-size: 0.75rem; padding: 6px 10px; }
+    .controls { gap: 8px; }
+    .btn { padding: 8px 12px; font-size: 0.8rem; }
+    .score-btn { width: 44px; height: 44px; font-size: 1.2rem; }
+    .second-row-btns { gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Tip page -->
+<div class="tip-page" id="tipPage">
+  <div class="tip-inner">
+    <div class="tip-hero">
+      <span class="tip-emoji">☕</span>
+      <h2>אהבת? קנה לי קפה!</h2>
+      <p>יצרתי את מערכת הלימוד הזו מתוך רצון לעזור לכולם לעבור את מבחן <strong>משיט 30</strong> בהצלחה. כל תרומה, קטנה כגדולה, עוזרת לי להמשיך לפתח ולשפר.</p>
+    </div>
+
+    <div class="tip-methods">
+
+      <!-- Bit -->
+      <div class="tip-card">
+        <div class="tip-icon">💙</div>
+        <div class="tip-info">
+          <div class="tip-name">Bit</div>
+          <div class="tip-detail">לחץ לתשלום ישיר דרך Bit</div>
+          <div class="tip-amounts">
+            <a class="tip-amount-badge" href="https://www.bitpay.co.il/app/me/18124AAF-90E1-455B-5AC8-02EFE5033697D1E6" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer;">☕ 10 ₪</a>
+            <a class="tip-amount-badge" href="https://www.bitpay.co.il/app/me/18124AAF-90E1-455B-5AC8-02EFE5033697D1E6" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer;">🌊 20 ₪</a>
+            <a class="tip-amount-badge" href="https://www.bitpay.co.il/app/me/18124AAF-90E1-455B-5AC8-02EFE5033697D1E6" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer;">⛵ 50 ₪</a>
+          </div>
+          <a class="tip-cta" href="https://www.bitpay.co.il/app/me/18124AAF-90E1-455B-5AC8-02EFE5033697D1E6" target="_blank" rel="noopener" style="margin-top:12px;width:100%;box-sizing:border-box;display:block;text-align:center;">
+            💙 שלם דרך Bit
+          </a>
+        </div>
+      </div>
+
+      <!-- Paybox -->
+      <div class="tip-card">
+        <div class="tip-icon">🟣</div>
+        <div class="tip-info">
+          <div class="tip-name">Paybox</div>
+          <div class="tip-detail">לחץ על הסכום הרצוי לתשלום ישיר</div>
+          <div class="tip-amounts">
+            <a class="tip-amount-badge" href="https://links.payboxapp.com/0Ykrb0OCZ2b" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer;">☕ 10 ₪</a>
+            <a class="tip-amount-badge" href="https://links.payboxapp.com/0Ykrb0OCZ2b" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer;">🌊 20 ₪</a>
+            <a class="tip-amount-badge" href="https://links.payboxapp.com/0Ykrb0OCZ2b" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer;">⛵ 50 ₪</a>
+          </div>
+          <a class="tip-cta" href="https://links.payboxapp.com/0Ykrb0OCZ2b" target="_blank" rel="noopener" style="margin-top:12px;width:100%;box-sizing:border-box;display:block;text-align:center;">
+            🟣 שלם דרך Paybox
+          </a>
+        </div>
+      </div>
+
+      <!-- PayPal -->
+      <div class="tip-card" style="flex-direction:column;align-items:flex-start;gap:12px;">
+        <div style="display:flex;align-items:center;gap:18px;width:100%;">
+          <div class="tip-icon">🌐</div>
+          <div class="tip-info">
+            <div class="tip-name">PayPal</div>
+            <div class="tip-detail">תשלום בינלאומי מאובטח</div>
+          </div>
+        </div>
+        <a class="tip-cta" href="https://paypal.me/yarivland" target="_blank" rel="noopener" style="width:100%;box-sizing:border-box;">
+          💳 תרום דרך PayPal
+        </a>
+      </div>
+
+    </div>
+
+    <p class="tip-note">💛 כל תרומה מתקבלת בהכרת תודה עמוקה</p>
+    <br>
+    <button class="btn-cancel" onclick="closeTipPage()" style="width:100%;margin-top:8px;">← חזור ללימוד</button>
+  </div>
+</div>
+
+<!-- Suggestion page -->
+<div class="suggest-page" id="suggestPage">
+  <div class="suggest-inner">
+    <h2>💡 הצעה לשיפור</h2>
+    <p class="subtitle-sug">יש לך רעיון שיכול לשפר את מערכת הלימוד? נשמח לשמוע!</p>
+
+    <div class="err-field">
+      <label>נושא ההצעה</label>
+      <input type="text" id="sugSubject" placeholder="לדוגמה: הוספת קטגוריה, שיפור עיצוב, פיצ'ר חדש...">
+    </div>
+    <div class="err-field">
+      <label>תאר את ההצעה</label>
+      <textarea id="sugDesc" placeholder="פרט את ההצעה שלך בצורה ברורה..."></textarea>
+    </div>
+    <div class="err-field">
+      <label>שמך (אופציונלי)</label>
+      <input type="text" id="sugName" placeholder="שם או כינוי">
+    </div>
+    <div class="err-field">
+      <label>המייל שלך (אופציונלי — אם תרצה שנחזור אליך)</label>
+      <input type="email" id="sugEmail" placeholder="your@email.com" dir="ltr">
+    </div>
+
+    <div class="err-actions">
+      <button class="btn-send" onclick="sendSuggestion()">📨 שלח הצעה</button>
+      <button class="btn-cancel" onclick="closeSuggestPage()">← חזור ללימוד</button>
+    </div>
+  </div>
+</div>
+
+<!-- Error report page -->
+<div class="error-page" id="errorPage">
+  <div class="error-inner">
+    <h2>⚠️ דיווח על טעות</h2>
+    <p class="subtitle-err">מצאת שגיאה בכרטיסייה? תאר אותה ונשלח דיווח לתיקון.</p>
+
+    <div class="card-preview" id="errCardPreview">
+      <div class="preview-label">הכרטיסייה הנוכחית</div>
+      <div class="preview-id" id="errCardId"></div>
+      <div class="preview-q" id="errCardQ"></div>
+      <div class="preview-a" id="errCardA"></div>
+    </div>
+
+    <div class="err-field">
+      <label>מה השגיאה? (תאר בבירור)</label>
+      <textarea id="errDesc" placeholder="לדוגמה: התשובה לא מדויקת, חסר מידע על..."></textarea>
+    </div>
+    <div class="err-field">
+      <label>מה התשובה הנכונה לדעתך?</label>
+      <textarea id="errFix" placeholder="הצע ניסוח מתוקן..."></textarea>
+    </div>
+    <div class="err-field">
+      <label>שמך (אופציונלי)</label>
+      <input type="text" id="errName" placeholder="שם או כינוי">
+    </div>
+    <div class="err-field">
+      <label>המייל שלך (אופציונלי — אם תרצה שנחזור אליך)</label>
+      <input type="email" id="errEmail" placeholder="your@email.com" dir="ltr">
+    </div>
+
+    <div class="err-actions">
+      <button class="btn-send" onclick="sendErrorReport()">📧 שלח דיווח</button>
+      <button class="btn-cancel" onclick="closeErrorPage()">← חזור ללימוד</button>
+    </div>
+  </div>
+</div>
+
+<!-- Score modal -->
+<div class="modal-overlay" id="scoreModal">
+  <div class="modal">
+    <h2>🏁 סיכום הסשן</h2>
+    <div class="score-big" id="scorePct">—</div>
+    <div class="score-sub" id="scoreDesc">ציון</div>
+    <div class="score-stats">
+      <div class="stat-box stat-correct">
+        <div class="stat-num" id="statCorrect">0</div>
+        <div class="stat-label">ידעתי ✓</div>
+      </div>
+      <div class="stat-box stat-wrong">
+        <div class="stat-num" id="statWrong">0</div>
+        <div class="stat-label">לא ידעתי ✗</div>
+      </div>
+      <div class="stat-box stat-skip">
+        <div class="stat-num" id="statSkip">0</div>
+        <div class="stat-label">דילגתי</div>
+      </div>
+    </div>
+    <div class="modal-btns">
+      <button class="btn-download" id="downloadBtn" onclick="downloadMissed()">⬇ הורד שאלות שלא ידעתי</button>
+      <button class="modal-close-btn" onclick="closeScoreModal()">סגור</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <header>
+    <span class="logo-icon">⛵</span>
+    <h1>לימוד <span>משיט 30</span></h1>
+    <p class="subtitle">כרטיסיות שאלה ותשובה — לחץ על הכרטיסייה להצגת התשובה</p>
+  </header>
+
+  <div class="category-section">
+    <div class="section-label">בחר קטגוריה</div>
+    <div class="category-grid" id="categoryGrid"></div>
+  </div>
+
+  <div class="controls">
+    <div class="live-score" id="liveScore">
+      ✓ <span class="ls-correct" id="lsCorrect">0</span>
+      &nbsp;✗ <span class="ls-wrong" id="lsWrong">0</span>
+    </div>
+    <button class="btn btn-gold" onclick="shuffleCards()">🔀 ערבוב</button>
+    <button class="btn" onclick="resetCards()">↩ איפוס</button>
+    <button class="btn" onclick="showScore()">📊 ציון</button>
+    <button class="btn-report" onclick="openErrorPage()">⚠️ מצאת טעות?</button>
+  </div>
+  <div class="second-row-btns">
+    <button class="btn-tip" onclick="openTipPage()">☕ קנה לי קפה</button>
+    <button class="btn-suggest" onclick="openSuggestPage()">💡 הצעה לשיפור</button>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <div class="card-wrap" id="cardWrap">
+    <div class="card" id="flashcard" onclick="handleCardClick(event)">
+      <div class="card-face card-front" id="cardFront">
+        <span class="card-id" id="frontId"></span>
+        <button class="speak-btn" id="speakFront" onclick="speakCurrent(event)" title="קרא בקול">🔊</button>
+        <span class="card-label">שאלה</span>
+        <div class="category-tag" id="frontCat"></div>
+        <div class="card-question" id="questionText"></div>
+        <span class="flip-hint">↻ לחץ לתשובה</span>
+      </div>
+      <div class="card-face card-back" id="cardBack">
+        <span class="card-id" id="backId"></span>
+        <button class="speak-btn" id="speakBack" onclick="speakCurrent(event)" title="קרא בקול">🔊</button>
+        <span class="card-label">תשובה</span>
+        <div class="card-answer" id="answerText"></div>
+        <div class="score-row" id="scoreRow">
+          <button class="score-btn btn-wrong" onclick="markCard(false, event)" title="לא ידעתי">✗</button>
+          <button class="score-btn btn-correct" onclick="markCard(true, event)" title="ידעתי">✓</button>
+        </div>
+        <span class="flip-hint">↻ לחץ לשאלה</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-row">
+    <button class="nav-btn" id="prevBtn" onclick="navigate(-1)">&#8594;</button>
+    <span class="pos-indicator" id="posIndicator">1 / 1</span>
+    <button class="nav-btn" id="nextBtn" onclick="navigate(1)">&#8592;</button>
+  </div>
+
+  <div class="empty-state" id="emptyState" style="display:none">
+    <div class="icon">🌊</div>
+    <p>בחר קטגוריה כדי להתחיל</p>
+  </div>
+</div>
+
+<script>
+const allData = [
+  // 1. מפרשנות
+  { id: "P01", cat: "מפרשנות", q: "פרט את כל השיטות למציאת כיוון הרוח.", a: "תחושה על הפנים והאוזניים, מד-רוח, חץ-רוח, שרוול-רוח, דגל או סרט הקשורים במעלה הרוח, התבוננות במפרשיות שכנות, ובכיוון האדוות והגלים על פני המים." },
+  { id: "P02", cat: "מפרשנות", q: "מהו תפקיד ה-Boom Jack?", a: "לשמור על המתח בשפה האחורית של המפרש הראשי ברוחות כהות." },
+  { id: "P03", cat: "מפרשנות", q: "מהו תפקיד ה-Topping Lift?", a: "להחזיק את המנור שלא ייפול כשאין מפרש." },
+  { id: "P04", cat: "מפרשנות", q: "מהם תפקידי הקיל?", a: "להתנגד להטיית הספינה, למנוע סטייה מהנתיב, להקטין את רדיוס הסיבוב וליצור ציר סיבוב." },
+  { id: "P05", cat: "מפרשנות", q: "לספינה נטייה חזקה לעלות וההיגוי קשה. מה יש לעשות?", a: "לצמצם מפרש ראשי." },
+  { id: "P06", cat: "מפרשנות", q: "מהו תפקיד מסילת החלוץ?", a: "לשנות את זווית המשיכה של מיתר החלוץ ולשלוט על גזרת המפרש." },
+  { id: "P07", cat: "מפרשנות", q: "באיזו זווית לרוח הספינה שטה במהירות מקסימלית?", a: "ברוח צד כהה, כ-100 מעלות ביחס לרוח." },
+  { id: "P08", cat: "מפרשנות", q: "על פי איזה עקרון פיסיקלי המפרשים מקדמים את הספינה ברוח קדמית וברוח גבית?", a: "בקדמית: הפלגה בעילוי. בגבית: הפלגה בגרר, כלומר דחף." },
+  { id: "P09", cat: "מפרשנות", q: "מה תפקיד השחיפים?", a: "ליצור צורת פרופיל כנף." },
+  { id: "P10", cat: "מפרשנות", q: "איך תזהר ממהפך בלתי מבוקר?", a: "ארד מהרוח בזהירות, אשים לב לסימני כיוון הרוח ולקריסת החלוץ." },
+  { id: "P11", cat: "מפרשנות", q: "למה החלוץ יקרוס וירצה לעבור צד ברוח מלאה?", a: "במעבר לרוח מלאה הראשי מסתיר לחלוץ את הרוח ולכן הוא קורס." },
+  { id: "P12", cat: "מפרשנות", q: "מנוע מדמים ביציאה מהמרינה, מה תעשה?", a: "אנסה להניע. אם לא מניע — אם הרוח נושבת והמרחב מאפשר, אפתח חלוץ ואתרחק. אם לא, אטיל עוגן." },
+  { id: "P13", cat: "מפרשנות", q: "מה ההבדל בין סיבוב למהפך?", a: "סיבוב הוא החלפת מפנה כשהחרטום חולף דרך מעלה הרוח, ואילו מהפך הוא החלפת מפנה שבה החרטום חולף דרך מורד הרוח." },
+  { id: "P14", cat: "מפרשנות", q: "למה בהפלגה ברוח גבית יש תחושה שהרוח נחלשה?", a: "בהפלגה ברוח גבית רוח הפנים מנוגדת לרוח האמיתית. לכן הרוח המדומה שאנחנו מרגישים נחלשת." },
+  { id: "P15", cat: "מפרשנות", q: "באיזו זווית לרוח יש יותר Leeway — סטייה מהנתיב?", a: "ברוח קדמית יש סטייה גדולה יותר מהנתיב." },
+  { id: "P16", cat: "מפרשנות", q: "מה תפקיד המצליבים?", a: "להרחיק את הוונטות מהתורן, ליצירת מבנה יציב שמקנה חוזק מבני לתורן." },
+  { id: "P17", cat: "מפרשנות", q: "מהן שתי הדרכים להפסיק נפנוף של מפרש?", a: "מתיחת המפרש או ירידה מהרוח." },
+  { id: "P18", cat: "מפרשנות", q: "באיזה אופן נייצב את הספינה במצב Heave To?", a: "על ידי שינוי איזון הכוחות בין הראשי — ששואף להרים את החרטום אל הרוח — והחלוץ, ששואף להוריד את החרטום מהרוח." },
+
+  // 2. תמרוני מנוע
+  { id: "T01", cat: "תמרוני מנוע", q: "איזה חבלים תכין לגישת דופן ואיך?", a: "חבל חרטום וחבל ירכתיים. ייקשרו מעבר לריילינג, וייפרסו אל מרכז הסירה למעבר לרציף. בתום הגישה, ייקשרו בסינגל-אפ." },
+  { id: "T02", cat: "תמרוני מנוע", q: "בגישת דופן מתחת לרוח (רוח מרחיקה מהרציף) — איזה חבל תעביר ראשון?", a: "חבל ירכתיים או בלם אמצע. ואז אשלב קדימה להצמדה לרציף." },
+  { id: "T03", cat: "תמרוני מנוע", q: "בעת גישת דופן שמנוע לא משלב לאחור — מה תעשה כדי לבלום?", a: "אשתמש בחבל ירכתיים כדי לעצור את הספינה ואמקם פנדר נייד במקום הנכון." },
+  { id: "T04", cat: "תמרוני מנוע", q: "למה מיועד פנדר נייד?", a: "להגנה על הספינה מפני פגיעה ברציף או בספינות אחרות בזמן תמרונים." },
+  { id: "T05", cat: "תמרוני מנוע", q: "הסבר יציאה מעגינה ים תיכונית.", a: "משלב לפנים, משחרר חבלי מורינג ונותן להם לשקוע. מנטרל ומנתק חבלי ירכתיים — חבל במעלה הרוח אחרון — ואז משלב קדימה ליציאה." },
+
+  // 3. עגינה
+  { id: "A01", cat: "עגינה", q: "איזה עוגנים יש בספינה ולאיזה קרקע הם מתאימים?", a: "שני עוגנים: מחרשה (ראשי) ודנפורט (משני). מתאימים לקרקע חולית ובוצית, לא לסלעית." },
+  { id: "A02", cat: "עגינה", q: "מה אורך ואיזה סוג משך עגינה יש בספינה?", a: "בעוגן הראשי: 70 מטר — 30 מטר שרשרת ו-40 מטר חבל." },
+  { id: "A03", cat: "עגינה", q: "מה תברר לפני עגינה ואיזה עזרים תשתמש?", a: "אבדוק שלא חל איסור לעגון, סוג ועומק קרקע, הגנה מגלים ורוחות, ומעגל עגינה נקי ממכשולים. אשתמש ב-Pilot Book, מפה ימית, אתרי אינטרנט ותוכנות ניווט." },
+  { id: "A04", cat: "עגינה", q: "פעולות לאחר עגינה לווידוא שהעוגן תפס?", a: "בדיקת רעידות בשרשרת, התייצבות חרטום מול הרוח, תכווינים יציבים ברוחבית, מהירות 0 ב-GPS ואין שינויים במד העומק." },
+  { id: "A05", cat: "עגינה", q: "כיצד תעגון כך שאם העוגן ייתקע תוכל להוציאו?", a: "חבל עם מצוף שיהיה קשור אל טבעת האמיר, ארוך בעומק המים + 5 מטר. ניתן למשוך את העוגן בניגוד לכיוון הנעיצה." },
+  { id: "A06", cat: "עגינה", q: "איך אפשר לשלוף עוגן תקוע?", a: "חבל מצוף מוכן מראש, שחרור משך והתקדמות לפנים, משיכת המשך בהתאם לגלים, העברת משקל חרטום/ירכתיים, או צוללן." },
+  { id: "A07", cat: "עגינה", q: "מה יהיה משך עוגן מינימלי בעומק 9 מטר? 12 מטר?", a: "עומק 9 מטר: 30 מטר. עומק 12 מטר: 36 מטר." },
+  { id: "A08", cat: "עגינה", q: "מהו סימן היום של כלי שיט עוגן?", a: "כדור שחור." },
+  { id: "A09", cat: "עגינה", q: "על פי מה נקבע משך חבל עוגן בעגינת ים פתוח?", a: "לפחות 30 מטר, ומעומק 10 מטרים — פי שלוש מעומק המים." },
+  { id: "A10", cat: "עגינה", q: "אתה עוגן יומיים ויש תחזית לסערה. פעולותיך?", a: "אם ניתן, עובר למקום מוגן יותר. אם נשאר — משחרר משך עוגן כמה שאפשר בהתאם למעגל העגינה." },
+  { id: "A11", cat: "עגינה", q: "עגינה ים תיכונית עם רוח חזקה בדופן — מתי ובאיזה זווית?", a: "מגיע מנקודת היערכות במעלה הרוח, מטיל עוגן כ-3 אורכי סירה מהרציף או יותר, ומגיע בזווית קלה למעלה הרוח." },
+  { id: "A12", cat: "עגינה", q: "5 שיטות לוידוא שהעוגן אינו נגרר?", a: "אין רעידות בשרשרת, תכווין יציב ברוחבית, מהירות 0 ב-GPS, העומק לא משתנה, החרטום יציב מול הרוח." },
+  { id: "A13", cat: "עגינה", q: "איזה סוג חבל טוב לעגינה?", a: "חבל שזור, שוקע." },
+
+  // 4. מטאורולוגיה
+  { id: "M01", cat: "מטאורולוגיה וים סוער", q: "פרט סימנים לדעת שסערה נכנסת.", a: "תחזית או התראה באינטרנט, מכשיר קשר, NAVTEX, נפילת לחץ ברומטרי, ענני קומולונימבוס." },
+  { id: "M02", cat: "מטאורולוגיה וים סוער", q: "פרט הכנות ספינה לסערה.", a: "תדרוך צוות וחלוקת משמרות, לבישת ביגוד חם + חליפות סערה + חגורות + רתמות, שתייה ואכילה, אטימות ואבטוח (לאשינג), צמצום/הורדת מפרשים, בדיקות תכופות, תכנון נתיב חלופי, ציון מיקום תכוף, הכנת Life Line." },
+  { id: "M03", cat: "מטאורולוגיה וים סוער", q: "אתה בסערה ים 10. מה תעשה?", a: "נכנס למצב הישרדות Run Before בעזרת עוגן צף." },
+  { id: "M04", cat: "מטאורולוגיה וים סוער", q: "כמה חבל משחררים לעוגן צף ומדוע?", a: "כמה שיותר, לפחות אורך גל וחצי — כדי שהעוגן יעבור דרך מסה גדולה של מים ויאט אותנו." },
+  { id: "M05", cat: "מטאורולוגיה וים סוער", q: "מה החשש ב-Run Before וכיצד פותרים?", a: "החשש: התחרטמות והסתובבות דופן לגלים. פתרון: עוגן צף." },
+  { id: "M06", cat: "מטאורולוגיה וים סוער", q: "איך קושרים עוגן צף?", a: "משולש גרירה בירכתיים, אליו חבל העוגן. לצד השני של העוגן — חבל היפוך." },
+  { id: "M07", cat: "מטאורולוגיה וים סוער", q: "מתי מצמצמים ואיזה מפרש קודם?", a: "כשהרוח מתחזקת, בתחזית, כשהנטייה לעלייה גוברת, כשההטיה גדלה, בלילה, בספק. בדרך כלל הראשי קודם." },
+  { id: "M08", cat: "מטאורולוגיה וים סוער", q: "מהו משטר הרוחות האופייני לקיץ ישראלי?", a: "האפיק הפרסי יוצר נשיבה מערבית החגה צפונה, המתחזקת עם הבריזה אחר הצהריים." },
+  { id: "M09", cat: "מטאורולוגיה וים סוער", q: "מהו משטר הרוחות לעונות המעבר?", a: "אפיק ים סוף: רוחות צפוניות ומזרחיות. שקעים שרביים מדרום-מערב הים התיכון — אובך שרבי ולעיתים גשם ובוץ." },
+  { id: "M10", cat: "מטאורולוגיה וים סוער", q: "מהי רוח המלטמי?", a: "רוח הנגרמת על ידי אפיק פרסי בקיץ, המתחזקת עקב התיעול בים האגאי." },
+  { id: "M11", cat: "מטאורולוגיה וים סוער", q: "כמה בופור יהיה ב-20 קשר?", a: "5 בופור." },
+  { id: "M12", cat: "מטאורולוגיה וים סוער", q: "מה ההבדל בין גלי גיבוע, גלי רוח וגלי חוף?", a: "גלי רוח: מחודדים ולא מסודרים, נוצרים בנשיבה. גלי גיבוע: ארוכים ומסודרים, מגיעים מרחוק. גלי חוף: גיבוע שנעצר בחלקו התחתון במים רדודים ויוצר גלים נשברים." },
+  { id: "M13", cat: "מטאורולוגיה וים סוער", q: "אתה 70 מייל מערבית לאשדוד, סערה דרומית. פעולותיך?", a: "פורס עוגן צף, Run Before, וממשיך צפונה לחיפה." },
+
+  // 5. מקרים ותגובות
+  { id: "R01", cat: "מקרים ותגובות", q: "מהי כמות הציוד הפירוטכני בספינה?", a: "2 רימוני עשן, 4 רקטות מצנח, 6 לפידים — 2, 4, 6." },
+  { id: "R02", cat: "מקרים ותגובות", q: "מהי כמות הציוד הפירוטכני באסדת ההצלה?", a: "1 רימון עשן, 2 רקטות מצנח, 3 לפידים — 1, 2, 3." },
+  { id: "R03", cat: "מקרים ותגובות", q: "עלית על שרטון — פעולותיך.", a: "מנטרל כוח מניע, בודק שלום הצוות, מעריך מצב ונזקים. אם אין נזק — מנסה לרדת: שילוב לכיוון הפוך, הטיית ספינה להקטנת שוקע, גרירה זהירה, טלת עוגן למים עמוקים + המתנה לגאות." },
+  { id: "R04", cat: "מקרים ותגובות", q: "שריפה בחדר מנוע — פעולותיך.", a: "מכריז 'שריפה', משאיר תא מנוע סגור, סוגר ברז דלק, מעלה סל\"ד בניוטרל לדממת מנוע, מרוקן מטפה דרך חריר כיבוי. סוגר ברז גז ומנתק מצברים. אם כבה — בקרת נזקים. אם מתגבר — משדר מצוקה ונערך לנטישה." },
+  { id: "R05", cat: "מקרים ותגובות", q: "איזה ציוד כיבוי יש בספינה?", a: "3 מטפי אבקה ידניים, מטפה אבקה אוטומטי בתא המנוע, שמיכת כיבוי מתחת לכיריים, דלי." },
+  { id: "R06", cat: "מקרים ותגובות", q: "שריפה בחרטום — פעולותיך?", a: "מכריז 'שריפה', מכבה במטפים ומים, סוגר ברז גז ומנתק מצברים, מפנה האש למורד הרוח, מרחיק חומרים דליקים. אם כבה — בקרת נזקים. אם מתגבר — מצוקה ונטישה." },
+  { id: "R07", cat: "מקרים ותגובות", q: "הצפה — פעולותיך.", a: "מכריז 'הצפה', מזהה מקור. מים מתוקים: מכבה משאבת שיפוליים ומטפל בנזילה. מים מלוחים: מניע מנוע, בודק פתחים, אוטם עם קלינים/סמרטוטים, פונה למעלה הרוח, מפעיל שאיבה, מסמן מפלס. אם לא שולט — מצוקה ונטישה." },
+  { id: "R08", cat: "מקרים ותגובות", q: "פרט את כל הפתחים מתחת לקו המים בסירה.", a: "מד עומק/מהירות, ברז מי ים למזגן, ברז ניקוז כיור מטבחון, ברז ניקוז כיור שירותים, ברז יציאת מי מקלחת, ברז כניסת מי שירותים, ברז יציאת מיכל שירותים, ברז כניסת מי ים למנוע." },
+  { id: "R09", cat: "מקרים ותגובות", q: "ציין את כל המשאבות — סוג וספיקה.", a: "בילג' חשמלית: 4160 ל/ש, דיאפרגמה. בילג' ידנית: ~400 ל/ש, דיאפרגמה. מקלחת חשמלית: 960 ל/ש, צנטריפוגלית. מים מתוקים: 960 ל/ש, צנטריפוגלית. בילג' ניידת: 6400 ל/ש, חשמלית צנטריפוגלית. קירור מנוע: 2000 ל/ש, אימפלור שינוי נפח." },
+  { id: "R10", cat: "מקרים ותגובות", q: "איזה ציוד תיקח בנטישת היאכטה?", a: "מים, מזון, בגדים, שמיכות, מכשיר קשר נייד, תיק עזרה ראשונה, פנס, ציוד פירוטכני, GPS נייד, SART ו-EPIRB." },
+  { id: "R11", cat: "מקרים ותגובות", q: "פרט תהליך הטלת רפסודה בעת נטישה.", a: "מאבטח פיינטר לברווז במורד הרוח, משליך רפסודה למורד הרוח (למעט שריפה), מושך פיינטר לניפוח. מקרב רפסודה, מעלה אנשים וציוד, סקיפר עולה אחרון, סופר צוות, חותך פיינטר. מתרחק במשוטים, פורס עוגנים, מחלק כדורים נגד מחלת ים." },
+  { id: "R12", cat: "מקרים ותגובות", q: "האם הרפסודה תטבע עם הספינה? הסבר שחרור אוטומטי.", a: "לא. בעומק 3-4 מטר המשחרר ההידרוסטטי חותך את קשרי האסדה. האסדה צפה, הפיינטר נמתח ושובר חוליית פלסטיק חלשה — האסדה המנופחת צפה לפני השטח." },
+  { id: "R13", cat: "מקרים ותגובות", q: "איזה ציוד יש באסדה?", a: "עזרה ראשונה, כדורי ים, סכין, 2 עוגנים צפים, מים ומזון, פנס, מראת איתות, משרוקית, פירוטכני (1 עשן, 2 מצנח, 3 לפיד), כלי ריקון, ערכת תיקון, משאבה, 2 משוטים, מחזיר הד מכ\"ם, ציוד דיג, ספר הישרדות." },
+  { id: "R14", cat: "מקרים ותגובות", q: "אסדה נפתחה הפוך — מה פעולותיך?", a: "שולח שחיין מאובטח בחבל + חגורת הצלה לטפס על מיכל הגז ולהפוך את האסדה." },
+  { id: "R15", cat: "מקרים ותגובות", q: "ביחס לרוח — לאיזה צד מטילים את האסדה?", a: "במורד הרוח (כדי להתרחק מהטביעה), למעט שריפה — אז במעלה הרוח, הרחק מלהבות." },
+  { id: "R16", cat: "מקרים ותגובות", q: "ציוד פירוטכני — ביום? בלילה? למסוקים? לאוניות?", a: "רימון עשן: ביום בלבד, יעיל לכלי טיס, לא יעיל ברוח חזקה. לפיד ורקטת מצנח: ביום ובלילה, לכלי שיט וכלי טיס." },
+  { id: "R17", cat: "מקרים ותגובות", q: "מהו הדבר החשוב ביותר לבדוק לגבי ציוד פירוטכני?", a: "את התוקף." },
+  { id: "R18", cat: "מקרים ותגובות", q: "מהי מקבילה לשימוש בפירוטכני במכשיר VHF?", a: "כפתור DISTRESS לשידור התרעת מצוקה ב-DSC ושידור MAYDAY בערוץ 16." },
+  { id: "R19", cat: "מקרים ותגובות", q: "כיצד מפעילים ציוד פירוטכני?", a: "לפי הוראות על האריזה. עשן: השלך לים במורד הרוח. לפיד: החזק במורד הרוח, רחוק מגוף ומחומרים דליקים. רקטה: יריה בזווית קלה למעלה הרוח, הרחק ממפרשים." },
+  { id: "R20", cat: "מקרים ותגובות", q: "פרט את כל סימני המצוקה.", a: "SOS, Mayday, EPIRB/SART, קול נפץ כל דקה, אות קולי ממושך, הרמת ידיים, אש/עשן, פירוטכניקה, דגל מרובע + כדור, דגלים C ו-N זה מעל זה." },
+  { id: "R21", cat: "מקרים ותגובות", q: "ים גבוה — נפל התורן ומים חודרים. פעולותיך?", a: "מנתק את התורן מהספינה, מתמודד עם ההצפה ומתקין אנטנה חלופית לפני שידור מצוקה." },
+  { id: "R22", cat: "מקרים ותגובות", q: "ונטה נקרעה — פעולותיך?", a: "מחליף מפנה למניעת נפילת התורן. מוריד מפרשים ומאלתר ונטה חלופית בעזרת מעלן." },
+  { id: "R23", cat: "מקרים ותגובות", q: "מפרש נקרע — פעולותיך?", a: "מצמצם מפרש כך שהקרע יהיה בתוך גולל החלוץ או נמוך מהשטח הפעיל." },
+
+  // 6. חוקי דרך
+  { id: "C01", cat: "חוקי דרך ותקנות", q: "הגדר כלי שיט בדרך שאינו עושה דרכו במים.", a: "כלי שיט שאינו על שרטון/עוגן/רציף, ושאינו מפעיל אמצעי הנעה (מפרש, מנוע, משוטים)." },
+  { id: "C02", cat: "חוקי דרך ותקנות", q: "מה ההבדל בין סימן יום של דייג למכמורתן?", a: "מכמורתן: שני חרוטים שחורים קודקוד לקודקוד (שעון חול). דייג: משולש קודקודו מעלה." },
+  { id: "C03", cat: "חוקי דרך ותקנות", q: "אורות הפלגה עם מפרשית בלילה — מה ואיפה?", a: "ירוק (ימין) ואדום (שמאל): כל אחד 112.5°. לבן ירכתיים: 135°. אורות רשות: אדום מעל ירוק. מתחת ל-20מ': רשאי לאחד לTricolor." },
+  { id: "C04", cat: "חוקי דרך ותקנות", q: "הנעת מנוע — אורות נוספים?", a: "אור ראש תורן לבן במרכז התורן, גזרה 225° לכיוון החרטום." },
+  { id: "C05", cat: "חוקי דרך ותקנות", q: "ראית אור לבן בודד — כל האפשרויות?", a: "ירכתיים של ממוכן/מפרשית, עוגן עד 50 מטר, כלי שיט שלא מצריך רישיון (עד 7מ' ועד 6 כ\"ס)." },
+  { id: "C06", cat: "חוקי דרך ותקנות", q: "אורות רשות מפרשית?", a: "אורות סביב: אדום מעל ירוק." },
+  { id: "C07", cat: "חוקי דרך ותקנות", q: "אורות כלי שיט שעוסק בצלילה בלילה?", a: "אורות סביב לבן בין שני אדומים." },
+  { id: "C08", cat: "חוקי דרך ותקנות", q: "דגלים בכניסה למרינה זרה?", a: "דגל Q (שמאל), דגל המדינה המארחת (ימין), דגל מדינת הרישום (ירכתיים)." },
+  { id: "C09", cat: "חוקי דרך ותקנות", q: "היכן אסור להפליג?", a: "בתחום 300מ' מהחוף (למעט כניסה/יציאה עד 5 קשרים), שטחים סגורים, חוף רחצה מוכרז, אזורי צלילה, נמל שאסורה בו כניסת יאכטות." },
+  { id: "C10", cat: "חוקי דרך ותקנות", q: "מרחק מינימום מהחוף בישראל?", a: "300 מטרים. ניתן לגשת קרוב יותר לעגינה/יציאה בניצב ועד 5 קשרים." },
+  { id: "C11", cat: "חוקי דרך ותקנות", q: "אותות קוליים בערפל — פרט לכל כלי שיט.", a: "עוגן (עד 100מ'): 5 שניות פעמון. עוגן (+100מ'): + גונג ירכתיים. על שרטון: 3 נקישות + 5שנ' פעמון + 3 נקישות. ממוכן עושה דרכו: צפירה ארוכה. ממוכן לא עושה: 2 ארוכות. מפרשית/גורר/דייג: ארוכה + 2 קצרות. נגרר: ארוכה + 3 קצרות." },
+  { id: "C12", cat: "חוקי דרך ותקנות", q: "ערפל, מצוף מול החרטום — האם תשמיע 3 קצרות?", a: "לא. לא משמיעים צפירות תמרון ואזהרה בראות מוגבלת." },
+  { id: "C13", cat: "חוקי דרך ותקנות", q: "אילו אותות יום יש ביאכטה?", a: "3 כדורים שחורים + חרוט אחד. כדור: עוגן. 2 כדורים: ללא שליטה. 3 כדורים: על שרטון. חרוט הפוך: ממוכן (מנוע בהפלגת מפרשים)." },
+  { id: "C14", cat: "חוקי דרך ותקנות", q: "איך בודקים אם קיימת סכנת התנגשות?", a: "הטווח מתקצר והזווית לא משתנה בצורה ניכרת." },
+
+  // 7. ניווט חופי
+  { id: "N01", cat: "ניווט חופי", q: "מהו ספר 5011?", a: "ספר סימני המפה הימית (המקרא), בהוצאת האדמירליות הבריטית." },
+  { id: "N02", cat: "ניווט חופי", q: "מהו מייל ימי?", a: "יחידת מרחק. דקה על קו אורך. 1.852 ק\"מ." },
+  { id: "N03", cat: "ניווט חופי", q: "מה זה Harbour Limit ומה המגבלות?", a: "גבול נמל. מותר להפליג אך אסור לעגון או לדוג." },
+  { id: "N04", cat: "ניווט חופי", q: "בביצוע Fix — כמה תכווינים ומדוע?", a: "3 תכווינים היוצרים משולש. כגודל המשולש — גודל שגיאת המדידה." },
+  { id: "N05", cat: "ניווט חופי", q: "איזו ספרות ניווט לטורקיה?", a: "Pilot Book של טורקיה וחוברת סימני מפה 5011. מפות לפי קטלוג מפות." },
+  { id: "N06", cat: "ניווט חופי", q: "מהן הדרכים למציאת שגיאת המצפן?", a: "השוואת קריאה לתכווין ידוע מהמפה; השוואה לתכווין GPS (GOTO לאתר ידוע); תכווין לכוכב הצפון." },
+  { id: "N07", cat: "ניווט חופי", q: "אתה 10 מייל מחוף ישראל, מזהה רק ארובת רידינג — איך תמצא מיקום מדויק?", a: "ביצוע הרצת תכווינים." },
+  { id: "N08", cat: "ניווט חופי", q: "קורס מצפן 300°, קורס אמיתי 295°, וריאציה E5°. מצא שגיאה ודוויאציה.", a: "שגיאה: W5°. וריאציה מהמפה: E5°. לכן דוויאציה: W10°." },
+
+  // 8. ניווט מכשירים וקשר
+  { id: "V01", cat: "ניווט וקשר", q: "מהו אזור מזג האוויר של ישראל?", a: "אזור 3." },
+  { id: "V02", cat: "ניווט וקשר", q: "מהו טווח השידור של NAVTEX?", a: "200 ק\"מ ביום, 400 ק\"מ בלילה." },
+  { id: "V03", cat: "ניווט וקשר", q: "האם אפשר לשדר MAYDAY ב-NAVTEX?", a: "לא. NAVTEX הוא מקלט בלבד." },
+  { id: "V04", cat: "ניווט וקשר", q: "הסבר: DW, Simplex, Duplex.", a: "DW: Dual Watch — האזנה לערוץ נבחר תוך דגימת ערוץ 16. Simplex: שידור/קליטה לסירוגין. Duplex: שידור וקליטה במקביל." },
+  { id: "V05", cat: "ניווט וקשר", q: "מהו ייעוד ערוצי VHF: 16, 13, 6, 8, 70, 15/17, 24-28, 11?", a: "16: קריאה, בטיחות, מצוקה. 13: Bridge to Bridge. 6: Intership + SAR. 8: קשר בין ספינות. 70: DSC דיגיטלי. 15/17: פנים-ספינתי 1W. 24-28: Public Correspondence (חוף). 11: חיל הים בישראל." },
+  { id: "V06", cat: "ניווט וקשר", q: "במה תלוי טווח קליטה של VHF?", a: "בהספק השידור ובטווח האופק." },
+  { id: "V07", cat: "ניווט וקשר", q: "אתה רוצה לעבור בשטח סגור של פלמחים. מי ובאיזה ערוץ?", a: "חיל הים, ערוץ 11." },
+  { id: "V08", cat: "ניווט וקשר", q: "שידרת DSC DISTRESS — מה יקרה בספינה ב-10 מייל?", a: "תישמע התראה ותוצג הודעת DISTRESS עם MMSI, מיקום וסוג המצוקה." },
+  { id: "V09", cat: "ניווט וקשר", q: "מהו הדיוק של GPS?", a: "כ-15 מטר." },
+  { id: "V10", cat: "ניווט וקשר", q: "האם אפשר לדבר עם ספינה אחרת בערוץ 25?", a: "לא. ערוץ 25 הוא דופלקס — רק עם תחנת חוף." },
+  { id: "V11", cat: "ניווט וקשר", q: "ראית רקטת מצנח אדומה — פעולותיך?", a: "מנסה ליצור קשר או לממסר הודעת מצוקה, ניגש לסייע אם אינו מסכן את הספינה/צוות." },
+
+  // 9. מכונה
+  { id: "E01", cat: "מכונה", q: "איך מנקזים אוויר ממערכת הדלק?", a: "מנקזים לחץ נמוך: בורגי ניקוז בספרטור + משאבת הזנה ידנית. מנסים להניע. אם לא — לחץ גבוה: START ממושך בניוטרל + פתיחת ברגי מרססים אחד-אחד עד יציאת דלק נקי." },
+  { id: "E02", cat: "מכונה", q: "איך מחליפים רצועה?", a: "משחררים 2 ברגי אלטרנטור, מסובבים בורג מתיחה להצמדה, מחליפים רצועה, מותחים עם בורג מתיחה, מהדקים ברגי אלטרנטור." },
+  { id: "E03", cat: "מכונה", q: "נדלקה התרעת חוסר טעינה ואחר כך חום מנוע — מה קרה? תהיה פליטת מי ים?", a: "הרצועה נקרעה. לא תהיה פליטת מי ים — משאבת מי הים אינה מונעת על ידי הרצועה." },
+  { id: "E04", cat: "מכונה", q: "התרעת חום מנוע — פעולותיך?", a: "מוריד עומס. יש פליטה: בודק רצועה, נוזל קירור, נזילות, טרמוסטט. אין פליטה: בודק ברז מי ים, פילטר, אימפלור." },
+  { id: "E05", cat: "מכונה", q: "נורית לחץ שמן נמוך — פעולותיך?", a: "מדומם מיד. בודק מפלס ואיכות שמן, נזילות, מים/דלק בשמן, פילטר סתום. מחליף לפי הצורך." },
+  { id: "E06", cat: "מכונה", q: "3 שיטות הדממת מנוע.", a: "1. סגירת ברז דלק + העלאת סל\"ד לניוטרל (שריפה). 2. ידית הדממה מכנית על וסת (תקלה חשמלית). 3. חניקת פילטר אוויר (תקלה בוסת הסיבובים)." },
+  { id: "E07", cat: "מכונה", q: "המצברים מחוברים בטור או במקביל? מה ההבדל?", a: "במקביל. טור: מעלה מתח. מקביל: מעלה קיבולת." },
+  { id: "E08", cat: "מכונה", q: "רעידות חזקות באזור ירכתיים — סיבה ואיך לוודא?", a: "נתפס חבל/שק במדחף. שילוב לניוטרל שמפסיק הרעידות מאשר זאת." },
+  { id: "E09", cat: "מכונה", q: "ג'ריקן סולר חלופי — הדלק נגמר מהר מהצפוי. למה?", a: "לא חוברר צינור העודפים לג'ריקן." },
+
+  // 10. הכרת סירה
+  { id: "B01", cat: "הכרת סירה", q: "ממדי הספינה?", a: "אורך: 11.55מ', רוחב: 3.75מ', שוקע: 1.95מ', גובה תורן: 15מ'." },
+  { id: "B02", cat: "הכרת סירה", q: "היכן רשימת ציוד החובה?", a: "בגב רישיון כושר השייט." },
+  { id: "B03", cat: "הכרת סירה", q: "ציוד בעל תפוגת תוקף בספינה?", a: "ציוד פירוטכני, אסדת ההצלה, המשחרר ההידרוסטטי ומטפי כיבוי." },
+  { id: "B04", cat: "הכרת סירה", q: "כמות דלק ומים ביאכטה?", a: "דלק: 155 ליטר. מים: 295 ליטר." },
+  { id: "B05", cat: "הכרת סירה", q: "מהו הטווח המקסימלי במנוע בלבד?", a: "כ-258 מייל. צריכה ~3 ל/שעה ב-2000 סל\"ד, ~5 קשרים." },
+  { id: "B06", cat: "הכרת סירה", q: "על איזה ציוד כותבים את מספר היאכטה?", a: "חרטום משני הצדדים, אסדת ההצלה, גלגלי ההצלה וחגורות ההצלה." },
+  { id: "B07", cat: "הכרת סירה", q: "כמה מטפים ואיזה סוג?", a: "4 מטפי אבקה: 3 ידניים + אחד אוטומטי בתא המנוע." },
+  { id: "B08", cat: "הכרת סירה", q: "איך תדע שמטפה תקין?", a: "בתוקף ומחוג לחץ בתחום הירוק." },
+  { id: "B09", cat: "הכרת סירה", q: "מה תפקיד החור במכסה תא המנוע?", a: "חריר כיבוי אש — מאפשר ריקון מטפה ללא פתיחת התא." },
+  { id: "B10", cat: "הכרת סירה", q: "כמה פילטרים יש בספינה?", a: "אחד לפני כל משאבה: 2 פילטרי דלק, פילטר שמן, פילטר מים מתוקים, פילטר קירור מזגן, פילטר ניקוז מקלחת." },
+
+  // 11. כללי
+  { id: "G01", cat: "כללי", q: "מה תעשה בהפלגת מפרשים ארוכה כדי שתוכל להניע מנוע?", a: "אניע מנוע כל כמה שעות לטעינת המצברים." },
+  { id: "G02", cat: "כללי", q: "מסמכים להפלגה חופית (סקיפר + ספינה)?", a: "רישיון משיט 30, תעודת זהות, רישיון כושר שייט, ביטוח בתוקף." },
+  { id: "G03", cat: "כללי", q: "מסמכים להפלגה בינלאומית?", a: "משיט 60, דרכון, תעודת מפעיל אלחוט, רשימת צוות, רישיון כושר שייט, ביטוח, תעודת רישום, אישור בדיקה + ספר יצרן אסדה, רישיון תחנת אלחוט." },
+  { id: "G04", cat: "כללי", q: "עד איזה טווח מותר למשיט 30?", a: "עד 12 מייל מהחוף (מימי החופין)." },
+  { id: "G05", cat: "כללי", q: "כל כמה זמן כושר שייט ליאכטה פרטית? מסחרית?", a: "מסחרית: כל שנה. פרטית: כל שנתיים." },
+  { id: "G06", cat: "כללי", q: "צוות מינימלי — חופית? בינלאומית?", a: "חופית: 2 (סקיפר + גיל 16+). בינלאומית: זהה, אך סירה מסחרית כמו דרך הים — 3 לפחות." },
+  { id: "G07", cat: "כללי", q: "כל כמה זמן בודקים רפסודה?", a: "רפסודה חדשה: לאחר 3 שנים. לאחר מכן: כל שנה." },
+  { id: "G08", cat: "כללי", q: "הכנות לפני תדלוק?", a: "סמרטוטים + סבון ליד פתח הדלק, כיבוי משאבת שיפוליים, הצגת דגל B (אדום)." },
+  { id: "G09", cat: "כללי", q: "ספינה מבקשת גרירה — 40 מייל מקפריסין. חייב? שיקולים? כיצד?", a: "לא חייב. שיקולים: ביטוח, מצב ים, צוות, התאמת הספינה, דלק, מרחק. ביצוע: משולש גרירה בירכתיים, חבל ארוך על סיפון, מועבר לנגרר, קשור למשולש גרירה בחרטומו." },
+  { id: "G10", cat: "כללי", q: "מתי משתמשים ברתמת בטיחות?", a: "ביציאה לסיפונים בחשכה ובים סוער." },
+  { id: "G11", cat: "כללי", q: "מה זה חבל חיים?", a: "רצועה מחרטום לירכתיים שאליה מתחבר פתיל רתמת הבטיחות." },
+  { id: "G12", cat: "כללי", q: "מה תפקיד הברומטר?", a: "לזהות שינויים בלחץ הברומטרי המעידים על סערה מתקרבת." },
+  { id: "G13", cat: "כללי", q: "האם ניתן לצאת עם שני ילדים בני 6 ו-8 בלבד?", a: "לא. נדרש איש צוות כשיר בגיל 16 לפחות." },
+  { id: "G14", cat: "כללי", q: "הכנות לפני עזיבת ספינה לשבועיים?", a: "כבל מתח חוף, קשירה טובה, פנדרים, סגירת ברזים מתחת לקו המים + ברזי דלק וגז, סגירת שקי מפרש + פרוונטר. מישהו מקומי לבדיקה." },
+  { id: "G15", cat: "כללי", q: "איך מרימים אדם שנפל למים — כבד וללא הכרה?", a: "בעזרת רתמה מתאימה ומעלן, באזור הדופן." },
+];
+
+const categories = ["הכל", ...new Set(allData.map(d => d.cat))];
+let currentCategory = "הכל";
+let currentDeck = [];
+let currentIndex = 0;
+let isFlipped = false;
+
+// Scoring
+let scores = {}; // id -> true/false/null
+let currentCardId = null;
+
+function getFiltered() {
+  if (currentCategory === "הכל") return [...allData];
+  return allData.filter(d => d.cat === currentCategory);
+}
+
+function buildCategoryGrid() {
+  const grid = document.getElementById('categoryGrid');
+  grid.innerHTML = '';
+  categories.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'cat-btn' + (cat === currentCategory ? ' active' : '');
+    const count = cat === "הכל" ? allData.length : allData.filter(d => d.cat === cat).length;
+    btn.textContent = `${cat} (${count})`;
+    btn.onclick = () => {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      resetCards();
+    };
+    grid.appendChild(btn);
+  });
+}
+
+function resetCards() {
+  currentDeck = getFiltered();
+  currentIndex = 0;
+  isFlipped = false;
+  scores = {};
+  document.getElementById('flashcard').classList.remove('flipped');
+  updateLiveScore();
+  updateCard();
+}
+
+function shuffleCards() {
+  currentDeck = getFiltered();
+  for (let i = currentDeck.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [currentDeck[i], currentDeck[j]] = [currentDeck[j], currentDeck[i]];
+  }
+  currentIndex = 0;
+  isFlipped = false;
+  scores = {};
+  document.getElementById('flashcard').classList.remove('flipped');
+  updateLiveScore();
+  updateCard();
+}
+
+function handleCardClick(e) {
+  // Don't flip if clicking a score button
+  if (e.target.closest('.score-btn')) return;
+  flipCard();
+}
+
+function flipCard() {
+  if (currentDeck.length === 0) return;
+  stopSpeech();
+  isFlipped = !isFlipped;
+  document.getElementById('flashcard').classList.toggle('flipped');
+}
+
+function navigate(dir) {
+  if (currentDeck.length === 0) return;
+  stopSpeech();
+  currentIndex = (currentIndex + dir + currentDeck.length) % currentDeck.length;
+  isFlipped = false;
+  document.getElementById('flashcard').classList.remove('flipped');
+  updateCard();
+}
+
+function markCard(correct, e) {
+  e.stopPropagation();
+  const card = currentDeck[currentIndex];
+  scores[card.id] = correct;
+  updateLiveScore();
+  // Auto-advance after short delay
+  setTimeout(() => {
+    if (currentIndex < currentDeck.length - 1) {
+      navigate(1);
+    }
+  }, 280);
+}
+
+function updateLiveScore() {
+  const vals = Object.values(scores);
+  const correct = vals.filter(v => v === true).length;
+  const wrong = vals.filter(v => v === false).length;
+  document.getElementById('lsCorrect').textContent = correct;
+  document.getElementById('lsWrong').textContent = wrong;
+}
+
+function showScore() {
+  const vals = Object.values(scores);
+  const correct = vals.filter(v => v === true).length;
+  const wrong = vals.filter(v => v === false).length;
+  const answered = correct + wrong;
+  const skipped = currentDeck.length - answered;
+  const pct = answered > 0 ? Math.round((correct / answered) * 100) : 0;
+
+  document.getElementById('scorePct').textContent = pct + '%';
+  document.getElementById('scoreDesc').textContent = `מתוך ${answered} שאלות שנענו`;
+  document.getElementById('statCorrect').textContent = correct;
+  document.getElementById('statWrong').textContent = wrong;
+  document.getElementById('statSkip').textContent = skipped;
+
+  const missedIds = Object.entries(scores).filter(([,v]) => v === false).map(([k]) => k);
+  document.getElementById('downloadBtn').disabled = missedIds.length === 0;
+
+  document.getElementById('scoreModal').classList.add('open');
+}
+
+function closeScoreModal() {
+  document.getElementById('scoreModal').classList.remove('open');
+}
+
+function downloadMissed() {
+  const missedIds = new Set(Object.entries(scores).filter(([,v]) => v === false).map(([k]) => k));
+  const missed = allData.filter(c => missedIds.has(c.id));
+  if (!missed.length) return;
+
+  let text = '=== שאלות שלא ידעתי — משיט 30 ===\n';
+  text += `תאריך: ${new Date().toLocaleDateString('he-IL')}\n`;
+  text += `סה"כ: ${missed.length} שאלות\n\n`;
+  text += '─'.repeat(50) + '\n\n';
+
+  missed.forEach((c, i) => {
+    text += `[${c.id}] ${c.cat}\n`;
+    text += `שאלה: ${c.q}\n`;
+    text += `תשובה: ${c.a}\n\n`;
+    if (i < missed.length - 1) text += '─'.repeat(50) + '\n\n';
+  });
+
+  const blob = new Blob(['\uFEFF' + text], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `שאלות-לא-ידעתי-${new Date().toLocaleDateString('he-IL').replace(/\//g,'-')}.txt`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// Error report
+function openErrorPage() {
+  const card = currentDeck[currentIndex];
+  if (!card) return;
+  document.getElementById('errCardId').textContent = '#' + card.id + ' · ' + card.cat;
+  document.getElementById('errCardQ').textContent = card.q;
+  document.getElementById('errCardA').textContent = card.a;
+  document.getElementById('errDesc').value = '';
+  document.getElementById('errFix').value = '';
+  document.getElementById('errName').value = '';
+  document.getElementById('errEmail').value = '';
+  document.getElementById('errorPage').classList.add('open');
+}
+
+function closeErrorPage() {
+  document.getElementById('errorPage').classList.remove('open');
+}
+
+function sendErrorReport() {
+  const card = currentDeck[currentIndex];
+  const desc = document.getElementById('errDesc').value.trim();
+  const fix = document.getElementById('errFix').value.trim();
+  const name = document.getElementById('errName').value.trim() || 'אנונימי';
+
+  if (!desc) {
+    alert('אנא תאר את הטעות לפני השליחה.');
+    return;
+  }
+
+  const userEmail = document.getElementById('errEmail').value.trim();
+  const sendBtn = document.querySelector('.btn-send');
+  sendBtn.disabled = true;
+  sendBtn.textContent = '⏳ שולח...';
+
+  const templateParams = {
+    card_id:      card.id,
+    card_cat:     card.cat,
+    card_q:       card.q,
+    card_a:       card.a,
+    error_desc:   desc,
+    error_fix:    fix || '(לא צוין)',
+    reporter_name:  name || 'אנונימי',
+    reporter_email: userEmail || 'לא סופק',
+  };
+
+  emailjs.send('service_lwodruw', 'template_lk8auvi', templateParams)
+    .then(() => {
+      sendBtn.disabled = false;
+      sendBtn.textContent = '📧 שלח דיווח';
+      showSuccessMsg();
+      setTimeout(() => closeErrorPage(), 2200);
+    })
+    .catch((err) => {
+      console.error('EmailJS error:', err);
+      sendBtn.disabled = false;
+      sendBtn.textContent = '📧 שלח דיווח';
+      alert('שגיאה בשליחה. אנא בדוק חיבור לאינטרנט ונסה שוב.');
+    });
+}
+
+function showSuccessMsg() {
+  const inner = document.querySelector('.error-inner');
+  const msg = document.createElement('div');
+  msg.style.cssText = 'background:rgba(20,143,119,0.2);border:1px solid rgba(20,143,119,0.4);border-radius:10px;padding:16px 20px;text-align:center;color:#4ecdc4;font-weight:600;font-size:1rem;margin-top:16px;';
+  msg.textContent = '✅ הדיווח נשלח בהצלחה! תודה.';
+  inner.appendChild(msg);
+  setTimeout(() => msg.remove(), 3000);
+}
+
+// Text to speech
+function speakCurrent(e) {
+  e.stopPropagation();
+  window.speechSynthesis.cancel();
+
+  const card = currentDeck[currentIndex];
+  if (!card) return;
+  const text = isFlipped ? card.a : card.q;
+
+  const btn = e.currentTarget;
+  const allBtns = document.querySelectorAll('.speak-btn');
+
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = 'he-IL';
+  utter.rate = 0.9;
+  utter.pitch = 1;
+
+  // Try to find Hebrew voice
+  const voices = window.speechSynthesis.getVoices();
+  const heVoice = voices.find(v => v.lang === 'he-IL') || voices.find(v => v.lang.startsWith('he'));
+  if (heVoice) utter.voice = heVoice;
+
+  utter.onstart = () => {
+    allBtns.forEach(b => b.classList.remove('speaking'));
+    btn.classList.add('speaking');
+    btn.textContent = '⏹';
+  };
+  utter.onend = utter.onerror = () => {
+    btn.classList.remove('speaking');
+    btn.textContent = '🔊';
+  };
+
+  // If already speaking — stop
+  if (btn.textContent === '⏹') {
+    window.speechSynthesis.cancel();
+    btn.classList.remove('speaking');
+    btn.textContent = '🔊';
+    return;
+  }
+
+  window.speechSynthesis.speak(utter);
+}
+
+// Stop speech on card flip/navigate
+function stopSpeech() {
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.speak-btn').forEach(b => {
+    b.classList.remove('speaking');
+    b.textContent = '🔊';
+  });
+}
+
+// Tip page
+function openTipPage() { document.getElementById('tipPage').classList.add('open'); }
+function closeTipPage() { document.getElementById('tipPage').classList.remove('open'); }
+
+function copyNumber(num, btn) {
+  navigator.clipboard.writeText(num).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '✅ הועתק! פתח את האפליקציה';
+    btn.style.background = 'linear-gradient(135deg,#0e6655,#148f77)';
+    btn.style.color = '#fff';
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 2500);
+  }).catch(() => {
+    btn.textContent = '📱 ' + num;
+  });
+}
+
+// Suggestion page
+function openSuggestPage() {
+  document.getElementById('sugSubject').value = '';
+  document.getElementById('sugDesc').value = '';
+  document.getElementById('sugName').value = '';
+  document.getElementById('sugEmail').value = '';
+  document.getElementById('suggestPage').classList.add('open');
+}
+function closeSuggestPage() { document.getElementById('suggestPage').classList.remove('open'); }
+
+function sendSuggestion() {
+  const subject = document.getElementById('sugSubject').value.trim();
+  const desc    = document.getElementById('sugDesc').value.trim();
+  const name    = document.getElementById('sugName').value.trim() || 'אנונימי';
+  const email   = document.getElementById('sugEmail').value.trim() || 'לא סופק';
+
+  if (!desc) {
+    alert('אנא תאר את ההצעה לפני השליחה.');
+    return;
+  }
+
+  const sendBtn = document.querySelector('.suggest-page .btn-send');
+  sendBtn.disabled = true;
+  sendBtn.textContent = '⏳ שולח...';
+
+  emailjs.send('service_lwodruw', 'template_okxg7sd', {
+    suggestion_subject: subject || '(ללא נושא)',
+    suggestion_desc:    desc,
+    reporter_name:      name,
+    reporter_email:     email,
+  })
+  .then(() => {
+    sendBtn.disabled = false;
+    sendBtn.textContent = '📨 שלח הצעה';
+    const inner = document.querySelector('.suggest-inner');
+    const msg = document.createElement('div');
+    msg.style.cssText = 'background:rgba(20,143,119,0.2);border:1px solid rgba(20,143,119,0.4);border-radius:10px;padding:16px 20px;text-align:center;color:#4ecdc4;font-weight:600;font-size:1rem;margin-top:16px;';
+    msg.textContent = '✅ ההצעה נשלחה! תודה רבה 🙏';
+    inner.appendChild(msg);
+    setTimeout(() => { msg.remove(); closeSuggestPage(); }, 2400);
+  })
+  .catch(() => {
+    sendBtn.disabled = false;
+    sendBtn.textContent = '📨 שלח הצעה';
+    alert('שגיאה בשליחה. אנא בדוק חיבור לאינטרנט ונסה שוב.');
+  });
+}
+
+function updateCard() {
+  const total = currentDeck.length;
+  document.getElementById('posIndicator').textContent = total > 0 ? `${currentIndex + 1} / ${total}` : '—';
+  document.getElementById('progressBar').style.width = total > 0 ? `${((currentIndex + 1) / total) * 100}%` : '0%';
+
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  prevBtn.disabled = total === 0;
+  nextBtn.disabled = total === 0;
+
+  if (total === 0) {
+    document.getElementById('cardWrap').style.display = 'none';
+    document.getElementById('emptyState').style.display = 'block';
+    return;
+  }
+
+  document.getElementById('cardWrap').style.display = 'block';
+  document.getElementById('emptyState').style.display = 'none';
+
+  const card = currentDeck[currentIndex];
+  currentCardId = card.id;
+  document.getElementById('frontCat').textContent = card.cat;
+  document.getElementById('questionText').textContent = card.q;
+  document.getElementById('answerText').textContent = card.a;
+  document.getElementById('frontId').textContent = '#' + card.id;
+  document.getElementById('backId').textContent = '#' + card.id;
+}
+
+buildCategoryGrid();
+resetCards();
+</script>
+</body>
+</html>
